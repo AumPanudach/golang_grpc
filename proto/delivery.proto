@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "grpc_server/delivery";
+
+service DeliveryService {
+  rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrderStatus (GetOrderStatusRequest) returns (GetOrderStatusResponse);
+}
+
+message CreateOrderRequest {
+  string customer_name = 1;
+  string address = 2;
+  string item = 3;
+}
+
+message CreateOrderResponse {
+  int32 order_id = 1;
+  string status = 2;
+}
+
+message GetOrderStatusRequest {
+  int32 order_id = 1;
+}
+
+message GetOrderStatusResponse {
+  string status = 1;
+}
